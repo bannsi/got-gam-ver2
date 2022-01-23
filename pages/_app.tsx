@@ -1,4 +1,6 @@
+import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
+import { ReactElement, ReactNode } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -26,13 +28,19 @@ const theme = {
   }
 };
 
-function MyApp({ Component, pageProps }: AppProps) {
+type NextPageWithLayout = NextPage & {
+  layout?: (page: ReactElement) => ReactNode;
+};
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const Layout = Component.layout || ((children) => <>{children}</>);
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <ThemeProvider theme={theme}>{Layout(<Component {...pageProps} />)}</ThemeProvider>
     </>
   );
 }
