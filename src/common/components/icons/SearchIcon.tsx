@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IconContainer } from './IconContainer';
 
 const SearchIcon = () => {
   return (
@@ -16,9 +17,3 @@ const SearchIcon = () => {
 };
 
 export default SearchIcon;
-
-const IconContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;

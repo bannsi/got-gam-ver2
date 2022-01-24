@@ -5,7 +5,7 @@ import ArchiveIcon from '../../../common/components/icons/navigation/ArchiveIcon
 import FeedIcon from '../../../common/components/icons/navigation/FeedIcon';
 import HomeIcon from '../../../common/components/icons/navigation/HomeIcon';
 import MyNavIcon from '../../../common/components/icons/navigation/MyNavIcon';
-import PlusIcon from '../../../common/components/icons/PlusIcon';
+import PlusIcon from '../../../common/components/icons/navigation/PlusIcon';
 import { Footer } from './Footer';
 
 const isPath = (url: string, match: string) => {

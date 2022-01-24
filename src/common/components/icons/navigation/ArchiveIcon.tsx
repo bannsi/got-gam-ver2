@@ -1,10 +1,10 @@
 import React from 'react';
-import { IconContainer } from '../IconContainer';
+import { NavIconContainer } from '../NavIconContainer';
 import { IconProps } from '../IconProps.type';
 
 const ArchiveIcon = ({ onClick, type = 'outlined' }: IconProps) => {
   return (
-    <IconContainer
+    <NavIconContainer
       onClick={onClick}
       dangerouslySetInnerHTML={{
         __html: svgMap[type]
