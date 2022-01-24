@@ -1,6 +1,6 @@
 import React from 'react';
-import { IconContainer } from './IconContainer';
-import { IconProps } from './IconProps.type';
+import { IconContainer } from '../IconContainer';
+import { IconProps } from '../IconProps.type';
 
 const MyNavIcon = ({ onClick, type = 'outlined' }: IconProps) => {
   return (

@@ -1,11 +1,10 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
-import ArchiveIcon from '../../../common/components/icons/ArchiveIcon';
-import FeedIcon from '../../../common/components/icons/FeedIcon';
-import HomeIcon from '../../../common/components/icons/HomeIcon';
-import MyNavIcon from '../../../common/components/icons/MyNavIcon';
+import ArchiveIcon from '../../../common/components/icons/navigation/ArchiveIcon';
+import FeedIcon from '../../../common/components/icons/navigation/FeedIcon';
+import HomeIcon from '../../../common/components/icons/navigation/HomeIcon';
+import MyNavIcon from '../../../common/components/icons/navigation/MyNavIcon';
 import PlusIcon from '../../../common/components/icons/PlusIcon';
 import { Footer } from './Footer';
 

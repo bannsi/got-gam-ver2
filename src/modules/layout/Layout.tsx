@@ -15,8 +15,11 @@ function Layout({ children }: LayoutProps) {
   );
 }
 
-export const getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
-
 export default Layout;
 
-const Container = styled.div``;
+export const getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

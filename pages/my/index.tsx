@@ -1,10 +1,10 @@
 import React from 'react';
-import Layout from '../../src/modules/layout/Layout';
+import { getLayout } from '../../src/modules/layout/Layout';
 
 const My = () => {
   return <div></div>;
 };
 
-My.layout = Layout;
+My.layout = getLayout;
 
 export default My;

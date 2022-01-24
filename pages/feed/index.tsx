@@ -1,10 +1,10 @@
 import React from 'react';
-import Layout from '../../src/modules/layout/Layout';
+import { getLayout } from '../../src/modules/layout/Layout';
 
 const Feed = () => {
-  return <div></div>;
+  return <div>피드</div>;
 };
 
-Feed.layout = Layout;
+Feed.layout = getLayout;
 
 export default Feed;

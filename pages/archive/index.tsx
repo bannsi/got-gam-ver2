@@ -1,10 +1,10 @@
 import React from 'react';
-import Layout from '../../src/modules/layout/Layout';
+import { getLayout } from '../../src/modules/layout/Layout';
 
 const Archive = () => {
   return <div></div>;
 };
 
-Archive.layout = Layout;
+Archive.layout = getLayout;
 
 export default Archive;
