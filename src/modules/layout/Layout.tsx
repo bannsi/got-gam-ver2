@@ -13,7 +13,7 @@ function Layout({ children }: LayoutProps) {
   return (
     <Container>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
           content="누군가의 기록이 나에게는 정보가 되고, 또 나의 기록이 누군가에게는 정보가 되는 여행 플랫폼"
@@ -36,6 +36,9 @@ export const getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  max-width: 812px;
   height: 100vh;
+  position: relative;
+  margin: auto;
+  border: 1px solid #cccccc;
 `;

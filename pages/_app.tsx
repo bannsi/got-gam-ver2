@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { ReactElement, ReactNode } from 'react';
 import { ThemeProvider } from 'styled-components';
+import { wrapper } from '../src/app/store';
 import { GlobalStyle } from '../styles/globalStyle';
 
 const theme = {
@@ -37,4 +38,4 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
