@@ -36,9 +36,8 @@ export const getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   max-width: 812px;
   height: 100vh;
-  position: relative;
-  margin: auto;
-  border: 1px solid #cccccc;
+  margin: 0 auto;
 `;

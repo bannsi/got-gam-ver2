@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Footer = styled.nav`
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   left: 0;

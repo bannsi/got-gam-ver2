@@ -9,4 +9,13 @@ export const GlobalStyle = createGlobalStyle`
   button {background:none;border:0;cursor:pointer;}
   a {text-decoration:none}
   table {border-collapse:collapse;border-spacing:0}
+  body{
+    font-family: 'NotoSans KR', sans-serif;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+  //css reset
 `;
