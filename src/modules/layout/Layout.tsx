@@ -1,6 +1,8 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
+import MyPageHeader from '../myPage/components/MyPageHeader';
 import { Header } from './components/Header';
 import Navigation from './components/Navigation';
 import SearchHeader from './components/SearchHeader';
@@ -10,6 +12,7 @@ interface LayoutProps {
 }
 
 function Layout({ children }: LayoutProps) {
+  const router = useRouter();
   return (
     <Container>
       <Head>
@@ -22,7 +25,7 @@ function Layout({ children }: LayoutProps) {
         <meta name="author" content="반시들" />
         <title>여행? 언제감? 곧,감</title>
       </Head>
-      <SearchHeader />
+      {router.pathname.includes('/my') ? <MyPageHeader /> : <SearchHeader />}
       {children}
       <Navigation />
     </Container>

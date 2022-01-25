@@ -1,8 +1,9 @@
 import React from 'react';
 import { getLayout } from '../../src/modules/layout/Layout';
+import MyPage from '../../src/modules/myPage/components/MyPage';
 
 const My = () => {
-  return <div></div>;
+  return <MyPage />;
 };
 
 My.layout = getLayout;
