@@ -12,14 +12,17 @@ const isPath = (url: string, match: string) => {
   return url === match ? 'filled' : 'outlined';
 };
 
-const Navigation = () => {
+interface NavigationProps {
+  onClick: () => void;
+}
+const Navigation = ({ onClick }: NavigationProps) => {
   const router = useRouter();
 
   return (
     <Container>
       <HomeIcon onClick={() => router.push('/')} type={isPath(router.pathname, '/')} />
       <FeedIcon onClick={() => router.push('/feed')} type={isPath(router.pathname, '/feed')} />
-      <PlusIcon />
+      <PlusIcon onClick={onClick} />
       <ArchiveIcon
         onClick={() => router.push('/archive')}
         type={isPath(router.pathname, '/archive')}

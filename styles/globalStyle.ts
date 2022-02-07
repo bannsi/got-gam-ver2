@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+  //css reset
   *{margin:0;padding:0;font:inherit;color:inherit;}
   *, :after, :before {box-sizing:border-box;flex-shrink:0;}
   :root {-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;text-size-adjust:100%;cursor:default;line-height:1.5;overflow-wrap:break-word;word-break:break-word;tab-size:4}
@@ -17,5 +18,30 @@ export const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
   }
-  //css reset
+  
+
+  //modal animation
+  .ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;     
+  }
+
+  .ReactModal__Content{
+      max-height: 0;
+      transition: max-height 500ms ease-in-out; 
+      
+  }
+  .ReactModal__Overlay--after-open{
+      opacity: 1;
+  }
+  .ReactModal__Content--after-open{
+      max-height: 600px;
+      
+  }
+  .ReactModal__Overlay--before-close{
+      opacity: 0;
+  }
+  .ReactModal__Content--before-close{
+      max-height: 0;
+  }
 `;
