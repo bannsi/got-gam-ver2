@@ -28,6 +28,6 @@ export const makeStore = (context: Context) => {
 
 export type AppStore = ReturnType<typeof makeStore>;
 // makeStore에서 반환되는 store의 타입
-export type AppState = ReturnType<AppStore['getState']>;
+// export type AppState = ReturnType<AppStore['getState']>;
 // 스토어에서 state를 가져왔을 때 반환되는 state의 타입
-export const wrapper = createWrapper<Store<AppState>>(makeStore, { debug: true });
+export const wrapper = createWrapper<Store<RootState>>(makeStore, { debug: true });

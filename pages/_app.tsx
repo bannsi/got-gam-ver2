@@ -6,9 +6,7 @@ import { wrapper } from '../src/app/store';
 import { GlobalStyle } from '../styles/globalStyle';
 
 const theme = {
-  brandColor: {
-    orange: '#F45400'
-  },
+  brandColor: '#F45400',
   grayScale: {
     black: '#000000',
     body: '#666666',
@@ -20,6 +18,11 @@ const theme = {
     white: '#ffffff'
   }
 };
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
 
 type NextPageWithLayout = NextPage & {
   layout?: (page: ReactElement) => ReactNode;

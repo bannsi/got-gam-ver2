@@ -36,11 +36,11 @@ function Layout({ children }: LayoutProps) {
       <Modal onClose={() => setVisible(false)} visible={visible}>
         <ModalContent type="1">
           <div className="title">기록하기</div>
-          <ModalItem onClick={() => router.push('/make-piece')}>
+          <ModalItem onClick={() => router.push('/makePiece')}>
             <div className="btn">조각</div>
             <div className="desc">다녀온 장소마다 세세하게 기록해요</div>
           </ModalItem>
-          <ModalItem onClick={() => router.push('/make-collection')}>
+          <ModalItem onClick={() => router.push('/makeCollection')}>
             <div className="btn">조각모음</div>
             <div className="desc  ">조각들을 모아 여행을 한눈에 정리해요</div>
           </ModalItem>

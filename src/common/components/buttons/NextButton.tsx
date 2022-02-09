@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Button } from '../../../../styles/text/Button';
 // import { ButtonText } from '../text/ButtonText';
 
 interface NextButtonProps {
-  text: string;
+  text?: string;
   onNext: () => void;
   disable?: boolean;
 }
@@ -16,7 +17,7 @@ const NextButton = ({ disable, text, onNext }: NextButtonProps) => {
         if (!disable) onNext();
       }}
     >
-      {/* <ButtonText>{text}</ButtonText> */}
+      {text ? text : '다음'}
     </Container>
   );
 };
@@ -34,7 +35,7 @@ const Container = styled.button<ContainerProps>`
   height: 53px;
   width: 100%;
   color: #ffffff;
-  /* margin: 0 16px; */
+  ${Button}
   ${(props) =>
     props.disable
       ? `
