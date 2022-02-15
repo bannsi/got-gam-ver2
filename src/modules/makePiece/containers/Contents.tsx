@@ -1,11 +1,14 @@
 import { useRouter } from 'next/router';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import NextButton from '../../../common/components/buttons/NextButton';
 import { Title } from '../components/Title';
+import { makePiece } from '../utils/makePiece.slice';
 
 const Contents = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   return (
     <Container>
       <Title>
@@ -14,7 +17,14 @@ const Contents = () => {
         </div>
       </Title>
 
-      <NextButton text="조각 올리기" disable={false} onNext={() => router.push('/')} />
+      <NextButton
+        text="조각 올리기"
+        disable={false}
+        onNext={() => {
+          router.push('/');
+          dispatch(makePiece());
+        }}
+      />
     </Container>
   );
 };

@@ -2,6 +2,12 @@ import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Location, LocationResponse } from './makePiece.type';
 import { pages } from './pages';
 
+export interface FileType {
+  id: number; // 파일들의 고유값 id
+  object: File;
+  url: string | ArrayBuffer | null;
+}
+
 interface MakePieceState {
   form: {
     imgLocation: Location;
@@ -10,7 +16,7 @@ interface MakePieceState {
     address: string;
     addressDetail: string;
     placeURL: string;
-    imgs: File[];
+    imgs: FileType[];
     date: Date;
     keywords: string[];
     companions: string[];
@@ -58,7 +64,7 @@ const makePieceSlice = createSlice({
       state.form.addressDetail = action.payload.address_name;
       state.form.placeURL = action.payload.place_url;
     },
-    setImg(state, action: PayloadAction<File[]>) {
+    setImg(state, action: PayloadAction<FileType[]>) {
       state.form.imgs = action.payload;
     },
     setKeywords(state, action: PayloadAction<string[]>) {
@@ -85,13 +91,18 @@ const makePieceSlice = createSlice({
       if (state.currentPageIndex > 0) {
         state.currentPageIndex--;
       }
+    },
+    makePiece(state) {
+      state.currentPageIndex = 0;
     }
   }
 });
 
-export const { setImgLocation, setLocation, setDate, nextPage, backPage } = makePieceSlice.actions;
+export const { setImgLocation, setLocation, setImg, setDate, nextPage, backPage, makePiece } =
+  makePieceSlice.actions;
 export default makePieceSlice.reducer;
 
 export const selectCurrentPageIndex = (state: RootState) => state.makePiece.currentPageIndex;
 export const selectAddress = (state: RootState) => state.makePiece.form.address;
 export const selectDate = (state: RootState) => state.makePiece.form.date;
+export const selectImgs = (state: RootState) => state.makePiece.form.imgs;

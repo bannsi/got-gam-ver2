@@ -6,7 +6,7 @@ const Auth = () => {
     <Container>
       <Logo src="logo.svg"></Logo>
       <LogIn
-        href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAO_LOGIN_APP_KEY}&redirect_uri=http://localhost:3000/auth/redirect`}
+        href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.NEXT_PUBLIC_KAKAO_LOGIN_APP_KEY}&redirect_uri=http://localhost:3000/auth/redirect`}
       >
         <img src="kakaologin.png" />
       </LogIn>

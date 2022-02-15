@@ -11,6 +11,7 @@ import Contents from './containers/Contents';
 import { pages } from './utils/pages';
 import MakeHeader from './components/MakeHeader';
 import SetLocation from './containers/SetLocation';
+import Script from 'next/script';
 
 type ComponentsType = {
   [key: string]: () => JSX.Element;
@@ -31,6 +32,10 @@ const MakePiece = () => {
   const Page = components[pages[currentPageIndex]] as () => JSX.Element;
   return (
     <Container>
+      <Script
+        type="text/javascript"
+        src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_APP_KEY}&autoload=false`}
+      ></Script>
       <MakeHeader />
       <Page />
     </Container>

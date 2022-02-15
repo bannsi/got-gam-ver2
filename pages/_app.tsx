@@ -18,11 +18,6 @@ const theme = {
     white: '#ffffff'
   }
 };
-declare global {
-  interface Window {
-    kakao: any;
-  }
-}
 
 type NextPageWithLayout = NextPage & {
   layout?: (page: ReactElement) => ReactNode;
@@ -30,6 +25,12 @@ type NextPageWithLayout = NextPage & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
+
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const Layout = Component.layout || ((children) => <>{children}</>);

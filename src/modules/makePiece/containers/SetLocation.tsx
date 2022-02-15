@@ -6,25 +6,28 @@ import { Caption } from '../../../../styles/text/Caption';
 import { SubTitle } from '../../../../styles/text/SubTitle';
 import { nextPage } from '../utils/makePiece.slice';
 import NextButton from '../../../common/components/buttons/NextButton';
-import Script from 'next/script';
+
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
 
 const SetLocation = () => {
+  const { kakao } = window;
   const dispatch = useDispatch();
   useEffect(() => {
-    const container = document.getElementById('mapper');
-    const options = {
-      center: new window.kakao.maps.LatLng(33.450701, 126.570667),
-      level: 20
-    };
-    const map = new window.kakao.maps.Map(container, options);
+    kakao.maps.load(() => {
+      const el = document.getElementById('map');
+      const map = new kakao.maps.Map(el, {
+        center: new kakao.maps.Coords(523951.25, 1085073.75)
+      });
+    });
   }, []);
+
   return (
     <Container>
-      <Script
-        type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9000674c91e38f9293fe6609d2320104"
-      ></Script>
-      <Map id="mapper" />
+      <Map id="map" />
       <Info type={'1'}>
         <div className="address">부산의 중심 서면</div>
         <div className="desc">부산광역시 금정구 부산대학로 63번길 2</div>
@@ -45,7 +48,7 @@ const Container = styled.div`
 
 const Map = styled.div`
   display: flex;
-  width: 100%;
+  width: 100vw;
   flex: 1 1 auto;
   background: #ffffff;
 `;
