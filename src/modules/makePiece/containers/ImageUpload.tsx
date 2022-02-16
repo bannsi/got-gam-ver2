@@ -1,10 +1,19 @@
 import { useRouter } from 'next/router';
 import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
-import ReactDatePicker from 'react-datepicker';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import NextButton from '../../../common/components/buttons/NextButton';
-import { FileType, nextPage, setImg, selectImgs } from '../utils/makePiece.slice';
+import {
+  FileType,
+  nextPage,
+  setImg,
+  selectImgs,
+  setImgLocation,
+  setDate
+} from '../utils/makePiece.slice';
+import EXIF from 'exif-js';
+import { Location } from '../utils/makePiece.type';
+import { ConvertDMSToDD } from '../utils/ConvertDMSToDD';
 
 const ImageUpload = () => {
   const router = useRouter();
@@ -15,34 +24,43 @@ const ImageUpload = () => {
   const fileId = useRef<number>(0);
   const dragRef = useRef<HTMLDivElement | null>(null);
 
-  const onChangeFiles = useCallback(
-    (e: ChangeEvent<HTMLInputElement> | any) => {
-      let selectFiles: File[] = [];
-      let tmpFiles: FileType[] = files;
-
-      if (e.type === 'drop') {
-        selectFiles = e.dataTransfer.files;
-      } else {
-        selectFiles = e.target.files;
+  const onChangeFiles = (e: ChangeEvent<HTMLInputElement> | any) => {
+    let selectFiles: File[] = [];
+    let tmpFiles: FileType[] = files;
+    if (e.type === 'drop') {
+      selectFiles = e.dataTransfer.files;
+    } else {
+      selectFiles = e.target.files;
+    }
+    const [file] = e.target.files;
+    EXIF.getData(file, function () {
+      const gpsLat = EXIF.getTag(file, 'GPSLatitude');
+      const gpsLng = EXIF.getTag(file, 'GPSLongitude');
+      const latDirection = EXIF.getTag(file, 'GPSLatitudeRef');
+      const lngDirection = EXIF.getTag(file, 'GPSLongitudeRef');
+      const date = EXIF.getTag(file, 'DateTime');
+      if (gpsLat && gpsLng && latDirection && lngDirection) {
+        const latDec = ConvertDMSToDD(gpsLat[0], gpsLat[1], gpsLat[2], latDirection);
+        const lngDec = ConvertDMSToDD(gpsLng[0], gpsLng[1], gpsLng[2], lngDirection);
+        const loc: Location = { lat: latDec, lng: lngDec };
+        dispatch(setImgLocation(loc));
       }
-      console.log(selectFiles);
-      for (const file of selectFiles) {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-          const previewImgUrl = reader.result;
-          console.log(file, previewImgUrl);
-          if (previewImgUrl) {
-            tmpFiles = [...tmpFiles, { id: fileId.current++, object: file, url: previewImgUrl }];
-            setFiles([...tmpFiles]);
-          }
-        };
+      if (date) {
+        dispatch(setDate(date));
       }
-
-      console.log(files, tmpFiles);
-    },
-    [files]
-  );
+    });
+    for (const file of selectFiles) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        const previewImgUrl = reader.result;
+        if (previewImgUrl) {
+          tmpFiles = [...tmpFiles, { id: fileId.current++, object: file, url: previewImgUrl }];
+          setFiles([...tmpFiles]);
+        }
+      };
+    }
+  };
 
   const handleDragIn = useCallback((e: DragEvent) => {
     e.preventDefault();
@@ -97,7 +115,7 @@ const ImageUpload = () => {
       <Content isDrag={isDrag} ref={dragRef}>
         <span>여기에 사진을 끌어다 놓으세요.</span>
         <label htmlFor="imgs">사진 직접 올리기</label>
-        <input id="imgs" type="file" accept="image/png" multiple onChange={onChangeFiles}></input>
+        <input id="imgs" type="file" accept="image/*" multiple onChange={onChangeFiles}></input>
       </Content>
       <Images>
         {files.length > 0 &&
@@ -107,12 +125,11 @@ const ImageUpload = () => {
               object: { name },
               url
             } = file;
-            console.log(file);
             return <PreviewImg key={id} url={url as string}></PreviewImg>;
           })}
       </Images>
       <NextButton
-        disable={false}
+        disable={files.length === 0}
         onNext={() => {
           dispatch(nextPage());
           dispatch(setImg(files));

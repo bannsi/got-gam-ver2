@@ -12,6 +12,7 @@ interface NextButtonProps {
 const NextButton = ({ disable, text, onNext }: NextButtonProps) => {
   return (
     <Container
+      disabled={disable}
       disable={disable}
       onClick={() => {
         if (!disable) onNext();
@@ -35,11 +36,13 @@ const Container = styled.button<ContainerProps>`
   height: 53px;
   width: 100%;
   color: #ffffff;
+
   ${Button}
   ${(props) =>
     props.disable
       ? `
-  background: #cccccc;`
+  background: #cccccc;
+  cursor: not-allowed;`
       : `background: #000000;`}
 
   border-radius: 8px;

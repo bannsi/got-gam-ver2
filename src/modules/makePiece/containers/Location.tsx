@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Button } from '../../../../styles/text/Button';
 import NextButton from '../../../common/components/buttons/NextButton';
-import { nextPage } from '../utils/makePiece.slice';
+import { nextPage, selectImgLocation } from '../utils/makePiece.slice';
 import SearchInput from '../components/SearchInput';
 import RightArrowIcon from '../../../common/components/icons/RightArrowIcon';
 

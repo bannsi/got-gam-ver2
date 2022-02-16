@@ -52,6 +52,7 @@ const makePieceSlice = createSlice({
   reducers: {
     setImgLocation(state, action: PayloadAction<Location>) {
       state.form.imgLocation = { ...action.payload };
+      console.log(action.payload);
     },
     setDate(state, action: PayloadAction<Date>) {
       state.form.date = action.payload;
@@ -106,3 +107,4 @@ export const selectCurrentPageIndex = (state: RootState) => state.makePiece.curr
 export const selectAddress = (state: RootState) => state.makePiece.form.address;
 export const selectDate = (state: RootState) => state.makePiece.form.date;
 export const selectImgs = (state: RootState) => state.makePiece.form.imgs;
+export const selectImgLocation = (state: RootState) => state.makePiece.form.imgLocation;
