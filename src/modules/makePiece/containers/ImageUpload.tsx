@@ -46,7 +46,8 @@ const ImageUpload = () => {
         dispatch(setImgLocation(loc));
       }
       if (date) {
-        dispatch(setDate(date));
+        const formatDate = date.split(' ')[0].replace(/:/g, '/') + ' ' + date.split(' ')[1];
+        dispatch(setDate(new Date(formatDate)));
       }
     });
     for (const file of selectFiles) {

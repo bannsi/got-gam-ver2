@@ -5,12 +5,12 @@ import NextButton from '../../../common/components/buttons/NextButton';
 import { Question } from '../components/Question';
 import { Title } from '../components/Title';
 import { dateFormat } from '../utils/dateFormat';
-import { nextPage, selectDate } from '../utils/makePiece.slice';
+import { nextPage, selectAddress, selectDate } from '../utils/makePiece.slice';
 
 const Companions = () => {
   const dispatch = useDispatch();
   const date = useSelector(selectDate);
-
+  const address = useSelector(selectAddress);
   return (
     <Container>
       <div className="title">
@@ -19,7 +19,7 @@ const Companions = () => {
           <div className="desc">에 갔던</div>
         </Title>
         <Title>
-          <div className="address">카페드펭</div>
+          <div className="address">{address}</div>
           <div className="desc">은</div>
         </Title>
       </div>

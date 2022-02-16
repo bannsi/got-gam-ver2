@@ -1,10 +1,16 @@
 /* global kakao */
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Caption } from '../../../../styles/text/Caption';
 import { SubTitle } from '../../../../styles/text/SubTitle';
-import { nextPage } from '../utils/makePiece.slice';
+import {
+  nextPage,
+  selectLocationLat,
+  selectLocationLng,
+  selectAddress,
+  selectAddressDetail
+} from '../utils/makePiece.slice';
 import NextButton from '../../../common/components/buttons/NextButton';
 
 declare global {
@@ -16,21 +22,33 @@ declare global {
 const SetLocation = () => {
   const { kakao } = window;
   const dispatch = useDispatch();
+  const lat = useSelector(selectLocationLat);
+  const lng = useSelector(selectLocationLng);
+  const address = useSelector(selectAddress);
+  const addressDetail = useSelector(selectAddressDetail);
+  console.log(lat, lng, typeof lat);
   useEffect(() => {
     kakao.maps.load(() => {
       const el = document.getElementById('map');
       const map = new kakao.maps.Map(el, {
-        center: new kakao.maps.Coords(523951.25, 1085073.75)
+        center: new kakao.maps.LatLng(lat, lng),
+        level: 10
       });
+      const markerPosition = new kakao.maps.LatLng(lat, lng);
+      const marker = new kakao.maps.Marker({
+        position: markerPosition
+      });
+      marker.setMap(map);
+      marker.setDraggable(true);
     });
-  }, []);
+  }, [lat, lng]);
 
   return (
     <Container>
       <Map id="map" />
       <Info type={'1'}>
-        <div className="address">부산의 중심 서면</div>
-        <div className="desc">부산광역시 금정구 부산대학로 63번길 2</div>
+        <div className="address">{address}</div>
+        <div className="desc">{addressDetail}</div>
         <NextButton text="이 위치로 설정" onNext={() => dispatch(nextPage())} />
       </Info>
     </Container>

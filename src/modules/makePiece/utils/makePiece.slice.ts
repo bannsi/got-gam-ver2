@@ -25,6 +25,7 @@ interface MakePieceState {
   keywordIds: string[];
   companionIds: string[];
   currentPageIndex: number;
+  locationList: LocationResponse[];
 }
 
 const initialState = {
@@ -43,7 +44,8 @@ const initialState = {
   },
   keywordIds: [],
   companionIds: [],
-  currentPageIndex: 0
+  currentPageIndex: 0,
+  locationList: []
 } as MakePieceState;
 
 const makePieceSlice = createSlice({
@@ -83,6 +85,12 @@ const makePieceSlice = createSlice({
     fetchCompanionIds(state, action: PayloadAction<string[]>) {
       state.companionIds = action.payload;
     },
+    fetchLocationStart() {
+      console.log('fetch location');
+    },
+    fetchLocationSuccess(state, action: PayloadAction<LocationResponse[]>) {
+      state.locationList = [...action.payload];
+    },
     nextPage(state) {
       if (pages.length > state.currentPageIndex + 1) {
         state.currentPageIndex++;
@@ -93,18 +101,35 @@ const makePieceSlice = createSlice({
         state.currentPageIndex--;
       }
     },
-    makePiece(state) {
-      state.currentPageIndex = 0;
+    makePieceStart() {
+      console.log('makepiece');
+    },
+    makePieceSuccess(state) {
+      return initialState;
     }
   }
 });
 
-export const { setImgLocation, setLocation, setImg, setDate, nextPage, backPage, makePiece } =
-  makePieceSlice.actions;
+export const {
+  setImgLocation,
+  setLocation,
+  setImg,
+  setDate,
+  nextPage,
+  backPage,
+  makePieceStart,
+  makePieceSuccess,
+  fetchLocationStart,
+  fetchLocationSuccess
+} = makePieceSlice.actions;
 export default makePieceSlice.reducer;
 
 export const selectCurrentPageIndex = (state: RootState) => state.makePiece.currentPageIndex;
-export const selectAddress = (state: RootState) => state.makePiece.form.address;
 export const selectDate = (state: RootState) => state.makePiece.form.date;
 export const selectImgs = (state: RootState) => state.makePiece.form.imgs;
 export const selectImgLocation = (state: RootState) => state.makePiece.form.imgLocation;
+export const selectLocationList = (state: RootState) => state.makePiece.locationList;
+export const selectLocationLat = (state: RootState) => state.makePiece.form.latitude;
+export const selectLocationLng = (state: RootState) => state.makePiece.form.longitude;
+export const selectAddress = (state: RootState) => state.makePiece.form.address;
+export const selectAddressDetail = (state: RootState) => state.makePiece.form.addressDetail;

@@ -3,15 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import NextButton from '../../../common/components/buttons/NextButton';
 import DatePicker from 'react-datepicker';
-import { nextPage, selectAddress, selectDate, setDate } from '../utils/makePiece.slice';
+import { nextPage, selectAddress, selectDate, selectImgs, setDate } from '../utils/makePiece.slice';
 import { Headline } from '../../../../styles/text/Headline';
 import { Title } from '../components/Title';
 require('react-datepicker/dist/react-datepicker.css');
 const Date = () => {
   const dispatch = useDispatch();
-  const location = useSelector(selectAddress);
+  const address = useSelector(selectAddress);
   const initDate = useSelector(selectDate);
+  const imgs = useSelector(selectImgs);
   const [date, setImgDate] = useState(initDate);
+  console.log(date, typeof date);
   return (
     <Container type="5">
       <div>
@@ -27,10 +29,15 @@ const Date = () => {
           <div className="desc">에 갔던</div>
         </Title>
         <Title>
-          <div className="address">카페드펭</div>
+          <div className="address">{address}</div>
           <div className="desc">은</div>
         </Title>
       </div>
+      <Images>
+        {imgs.map((file) => (
+          <Image key={file.id} src={file.url as string} />
+        ))}
+      </Images>
       <NextButton disable={false} onNext={() => dispatch(nextPage())} />
     </Container>
   );
@@ -59,4 +66,20 @@ const Container = styled.div`
     ${Headline}
     color: ${(props) => props.theme.grayScale.body}
   }
+`;
+
+const Images = styled.div`
+  display: flex;
+  overflow-x: scroll;
+`;
+
+const Image = styled.img`
+  width: 304px;
+  height: 304px;
+  border-radius: 8px;
+  min-width: 304px;
+  min-height: 304px;
+  border-radius: 8px;
+  margin-right: 16px;
+  object-fit: cover;
 `;
