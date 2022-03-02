@@ -1,10 +1,11 @@
 import React from 'react';
+import Archive from '../../src/modules/archive/containers/Archive';
 import { getLayout } from '../../src/modules/layout/Layout';
 
-const Archive = () => {
-  return <div></div>;
+const index = () => {
+  return <Archive />;
 };
 
-Archive.layout = getLayout;
+index.layout = getLayout;
 
-export default Archive;
+export default index;

@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const PieceMakerItem = () => {
-  return <Container src={'./junnie.png'} className="profileImg"></Container>;
+interface PieceMakerProps {
+  src: string;
+}
+const PieceMakerItem = ({ src }: PieceMakerProps) => {
+  return <Container src={src} className="profileImg"></Container>;
 };
 
 export default PieceMakerItem;

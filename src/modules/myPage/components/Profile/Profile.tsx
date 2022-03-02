@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import MyCollections from '../../containers/MyCollections';
+import MyPieces from '../../containers/MyPieces';
+import { fetchMyPiecesStart } from '../../utils/myPage.slice';
 // import { RootState } from '../../../app/rootReducer';
 // import {
 //   fetchMyCollectionStart,
@@ -18,21 +21,13 @@ import Selector from './Selector';
 
 const Profile = () => {
   const [showPiece, setShowPiece] = useState(true);
-  const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchMyPieceStart());
-  //   dispatch(fetchMyCollectionStart());
-  // }, []);
-
-  // const pieceList = useSelector((state: RootState) => selectMyPieceList(state));
-  // const collectionList = useSelector((state: RootState) => selectMyCollectionList(state));
 
   return (
     <Container>
       <ProfileInfo></ProfileInfo>
       <FollowInfo></FollowInfo>
       <Selector showPiece={showPiece} setShowPiece={setShowPiece}></Selector>
-      {/* {showPiece ? <PieceList list={pieceList} /> : <CollectionList list={collectionList} />} */}
+      {showPiece ? <MyPieces /> : <MyCollections />}
     </Container>
   );
 };

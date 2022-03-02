@@ -13,7 +13,6 @@ const Date = () => {
   const initDate = useSelector(selectDate);
   const imgs = useSelector(selectImgs);
   const [date, setImgDate] = useState(initDate);
-  console.log(date, typeof date);
   return (
     <Container type="5">
       <div>

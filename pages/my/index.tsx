@@ -1,6 +1,7 @@
 import React from 'react';
+import { wrapper } from '../../src/app/store';
 import { getLayout } from '../../src/modules/layout/Layout';
-import MyPage from '../../src/modules/myPage/components/MyPage';
+import MyPage from '../../src/modules/myPage/containers/MyPage';
 
 const My = () => {
   return <MyPage />;

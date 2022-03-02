@@ -7,10 +7,10 @@ export interface ApiOption {
   method: 'get' | 'post' | 'put' | 'delete';
   headers?: { [key: string]: string };
   body?: { [key: string]: any }; // eslint-disable-line
-  query?: { [key: string]: string | number | boolean };
+  param?: { [key: string]: string | number | boolean };
 }
 
-const kakaoApiRequest = async <T>({ url, method, headers, body, query }: ApiOption): Promise<T> => {
+const kakaoApiRequest = async <T>({ url, method, headers, body, param }: ApiOption): Promise<T> => {
   let response = {} as AxiosResponse;
 
   try {
@@ -19,7 +19,7 @@ const kakaoApiRequest = async <T>({ url, method, headers, body, query }: ApiOpti
       url: `${url}.json`,
       method,
       data: body,
-      params: query
+      params: param
     };
     requestConfig.headers = headers ? { ...headers } : {};
     requestConfig.headers.Authorization = `KakaoAK ${process.env.NEXT_PUBLIC_KAKAO_LOGIN_APP_KEY}`;

@@ -1,10 +1,11 @@
 import React from 'react';
+import Feed from '../../src/modules/feed/Feed';
 import { getLayout } from '../../src/modules/layout/Layout';
 
-const Feed = () => {
-  return <div>피드</div>;
+const index = () => {
+  return <Feed />;
 };
 
-Feed.layout = getLayout;
+index.layout = getLayout;
 
-export default Feed;
+export default index;

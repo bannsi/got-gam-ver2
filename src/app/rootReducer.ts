@@ -1,6 +1,7 @@
 import { AnyAction, combineReducers } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 import makePieceSlice from '../modules/makePiece/utils/makePiece.slice';
+import myPageSlice from '../modules/myPage/utils/myPage.slice';
 
 export const rootReducer = (state: RootState | undefined, action: AnyAction) => {
   switch (action.type) {
@@ -14,7 +15,8 @@ export const rootReducer = (state: RootState | undefined, action: AnyAction) => 
 };
 
 const reducer = combineReducers({
-  ['makePiece']: makePieceSlice
+  ['makePiece']: makePieceSlice,
+  ['myPage']: myPageSlice
 });
 
 declare global {

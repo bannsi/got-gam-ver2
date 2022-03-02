@@ -26,20 +26,20 @@ const SetLocation = () => {
   const lng = useSelector(selectLocationLng);
   const address = useSelector(selectAddress);
   const addressDetail = useSelector(selectAddressDetail);
-  console.log(lat, lng, typeof lat);
+
   useEffect(() => {
     kakao.maps.load(() => {
       const el = document.getElementById('map');
       const map = new kakao.maps.Map(el, {
         center: new kakao.maps.LatLng(lat, lng),
-        level: 10
+        level: 3
       });
       const markerPosition = new kakao.maps.LatLng(lat, lng);
       const marker = new kakao.maps.Marker({
         position: markerPosition
       });
       marker.setMap(map);
-      marker.setDraggable(true);
+      // marker.setDraggable(true);
     });
   }, [lat, lng]);
 

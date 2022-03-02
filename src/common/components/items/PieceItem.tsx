@@ -19,7 +19,7 @@ const PieceItem = ({ piece }: Props) => {
   return (
     <ContainerBox>
       <ArchiveButton isArchived={isArchived} onArchive={onArchive} />
-      <Container src={piece?.images[0]} onClick={() => router.push(`/piece/${piece.pieceId}`)} />
+      <Container src={piece.images[0]} onClick={() => router.push(`/piece/${piece.pieceId}`)} />
     </ContainerBox>
   );
 };
@@ -34,7 +34,7 @@ const ContainerBox = styled.div`
   height: calc(50vw - 1.5px);
 `;
 
-const Container = styled(Image)`
+const Container = styled.img`
   width: 100%;
   height: 100%;
   background: #cccccc;

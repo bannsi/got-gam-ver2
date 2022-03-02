@@ -6,7 +6,8 @@ import {
   fetchLocationStart,
   nextPage,
   selectLocationList,
-  setLocation
+  setLocation,
+  searchLocationStart
 } from '../utils/makePiece.slice';
 import SearchInput from '../components/SearchInput';
 import RightArrowIcon from '../../../common/components/icons/RightArrowIcon';
@@ -20,13 +21,19 @@ const Location = () => {
   useEffect(() => {
     dispatch(fetchLocationStart());
   }, []);
+
+  function handleSearch(search: string) {
+    setSearch(search);
+    dispatch(searchLocationStart(search));
+  }
+
   return (
     <Container>
-      <SearchInput search={search} setSearch={setSearch} />
-      <DirectSearch onClick={() => dispatch(nextPage())}>
+      <SearchInput search={search} handleSearch={handleSearch} />
+      {/* <DirectSearch onClick={() => dispatch(nextPage())}>
         <span>지도에서 직접 지정</span>
         <RightArrowIcon />
-      </DirectSearch>
+      </DirectSearch> */}
       <LocationList>
         {locationList.map((location) => (
           <LocationItem

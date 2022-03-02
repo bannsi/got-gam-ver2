@@ -2,7 +2,7 @@ import React from 'react';
 import { NavIconContainer } from '../NavIconContainer';
 
 interface ButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
 }
 const PlusIcon = ({ onClick }: ButtonProps) => {
   return (

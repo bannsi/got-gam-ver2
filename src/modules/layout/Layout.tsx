@@ -7,7 +7,7 @@ import { Caption } from '../../../styles/text/Caption';
 import { SubTitle } from '../../../styles/text/SubTitle';
 import Modal from '../../common/components/modal/Modal';
 import MyPageHeader from '../myPage/components/MyPageHeader';
-import { Header } from './components/Header';
+import ArchiveHeader from '../archive/components/ArchiveHeader';
 import Navigation from './components/Navigation';
 import SearchHeader from './components/SearchHeader';
 
@@ -30,7 +30,13 @@ function Layout({ children }: LayoutProps) {
         <meta name="author" content="반시들" />
         <title>여행? 언제감? 곧,감</title>
       </Head>
-      {router.pathname.includes('/my') ? <MyPageHeader /> : <SearchHeader />}
+      {router.pathname.includes('/my') ? (
+        <MyPageHeader />
+      ) : router.pathname.includes('/archive') ? (
+        <ArchiveHeader />
+      ) : (
+        <SearchHeader />
+      )}
       {children}
       <Navigation onClick={() => setVisible(true)} />
       <Modal onClose={() => setVisible(false)} visible={visible}>

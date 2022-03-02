@@ -4,17 +4,17 @@ import SearchIcon from '../../../common/components/icons/SearchIcon';
 
 interface SearchProps {
   search: string;
-  setSearch: (search: string) => void;
+  handleSearch: (search: string) => void;
 }
 
-const SearchInput = ({ search, setSearch }: SearchProps) => {
+const SearchInput = ({ search, handleSearch }: SearchProps) => {
   return (
     <InputContainer>
       <SearchIcon />
       <Input
         value={search}
         placeholder="검색"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSearch(e.target.value)}
       />
     </InputContainer>
   );

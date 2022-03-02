@@ -1,14 +1,15 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import NextButton from '../../../common/components/buttons/NextButton';
 import { Title } from '../components/Title';
-import { makePieceStart } from '../utils/makePiece.slice';
+import { makePieceStart, setContents } from '../utils/makePiece.slice';
 
 const Contents = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [content, setContent] = useState('');
   return (
     <Container>
       <Title>
@@ -16,12 +17,19 @@ const Contents = () => {
           기록하고 싶은 게 있다면 <br /> 자유롭게 작성해주세요
         </div>
       </Title>
-      <TextArea placeholder="200자 이내" maxLength={200}></TextArea>
+      <TextArea
+        placeholder="200자 이내"
+        value={content}
+        onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)}
+        maxLength={200}
+      ></TextArea>
       <NextButton
         text="조각 올리기"
         disable={false}
         onNext={() => {
+          dispatch(setContents(content));
           dispatch(makePieceStart());
+          dispatch;
           router.push('/');
         }}
       />

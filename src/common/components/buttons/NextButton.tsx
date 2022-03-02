@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button } from '../../../../styles/text/Button';
-// import { ButtonText } from '../text/ButtonText';
 
 interface NextButtonProps {
   text?: string;
@@ -36,7 +35,7 @@ const Container = styled.button<ContainerProps>`
   height: 53px;
   width: 100%;
   color: #ffffff;
-
+  transition: all 0.3s;
   ${Button}
   ${(props) =>
     props.disable

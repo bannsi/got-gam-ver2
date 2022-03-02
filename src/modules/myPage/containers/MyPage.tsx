@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Profile from './Profile/Profile';
+import Profile from '../components/Profile/Profile';
 
 function MyPage() {
   return (

@@ -2,19 +2,23 @@ import { Keyword } from './keyword.interface';
 import { WhoKeyword } from './whoKeyword.interface';
 
 export interface Piece {
-  address: string;
-  addressDetail: string;
+  pieceId: number;
+  user?: {
+    kakaoId: string;
+    nickname: string;
+    enabled: boolean;
+    createdAt: string;
+  };
   content: string;
   date: string;
-  pieceId: number;
-  images: string[];
-  user?: {
-    nickname: string;
-  };
-  keywords: Keyword[];
+  createdAt?: string;
   latitude: number;
   longitude: number;
+  address: string;
+  addressDetail: string;
   placeUrl: string;
-  createdAt?: string;
+  keywords: Keyword[];
+  opKeywords: Keyword[];
   whos: WhoKeyword[];
+  images: string[];
 }

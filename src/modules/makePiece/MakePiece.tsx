@@ -1,7 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { selectCurrentPageIndex } from './utils/makePiece.slice';
+import { backPage, fetchAllKeyword, selectCurrentPageIndex } from './utils/makePiece.slice';
 import ImageUpload from './containers/ImageUpload';
 import Location from './containers/Location';
 import Date from './containers/Date';
@@ -9,9 +9,10 @@ import Keywords from './containers/Keywords';
 import Companions from './containers/Companions';
 import Contents from './containers/Contents';
 import { pages } from './utils/pages';
-import MakeHeader from './components/MakeHeader';
 import SetLocation from './containers/SetLocation';
 import Script from 'next/script';
+import Header from '../../common/components/items/Header';
+import Router from 'next/router';
 
 type ComponentsType = {
   [key: string]: () => JSX.Element;
@@ -28,15 +29,27 @@ const components: ComponentsType = {
 };
 
 const MakePiece = () => {
+  const dispatch = useDispatch();
   const currentPageIndex = useSelector(selectCurrentPageIndex);
   const Page = components[pages[currentPageIndex]] as () => JSX.Element;
+
+  useEffect(() => {
+    dispatch(fetchAllKeyword());
+  }, []);
+  const handleBack = () => {
+    if (currentPageIndex === 0) {
+      Router.back();
+    } else {
+      dispatch(backPage());
+    }
+  };
   return (
     <Container>
       <Script
         type="text/javascript"
         src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_APP_KEY}&autoload=false`}
       ></Script>
-      <MakeHeader />
+      <Header text="조각 만들기" handleBack={handleBack} />
       <Page />
     </Container>
   );
