@@ -25,6 +25,7 @@ interface MakePieceState {
     options: number[];
     companions: number[];
     contents: string;
+    place: string;
   };
   keywordIds: Keyword[];
   companionIds: WhoKeyword[];
@@ -46,7 +47,8 @@ const initialState = {
     keywords: [],
     options: [],
     companions: [],
-    contents: ''
+    contents: '',
+    place: ''
   },
   keywordIds: [],
   companionIds: [],

@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import ArchiveButton from '../buttons/ArchiveButton';
 import { Piece } from '../../interfaces/piece.interface';
 import Image from 'next/image';
+import { PieceThumnail } from '../../interfaces/pieceThumbnail.interface';
 
 interface Props {
-  piece: Piece;
+  piece: PieceThumnail;
 }
 
 const PieceItem = ({ piece }: Props) => {
@@ -15,11 +16,11 @@ const PieceItem = ({ piece }: Props) => {
     setIsArchived(!isArchived);
   };
   const router = useRouter();
-
+  console.log(piece);
   return (
     <ContainerBox>
       <ArchiveButton isArchived={isArchived} onArchive={onArchive} />
-      <Container src={piece.images[0]} onClick={() => router.push(`/piece/${piece.pieceId}`)} />
+      <Container src={piece.thumbnail} onClick={() => router.push(`/piece/${piece.pieceId}`)} />
     </ContainerBox>
   );
 };

@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Piece } from '../../interfaces/piece.interface';
+import { PieceThumnail } from '../../interfaces/pieceThumbnail.interface';
 import PieceItem from './PieceItem';
 
 interface PieceListProps {
-  list: Piece[];
+  list: PieceThumnail[];
 }
 
 const PieceList = ({ list }: PieceListProps) => {

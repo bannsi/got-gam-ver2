@@ -21,4 +21,5 @@ export interface Piece {
   opKeywords: Keyword[];
   whos: WhoKeyword[];
   images: string[];
+  place: string;
 }

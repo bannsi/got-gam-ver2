@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Caption } from '../../../../../styles/text/Caption';
+import { Caption } from '../../../../styles/text/Caption';
 
-const Follow = () => {
+const FollowButton = () => {
   const [follow, setFollow] = useState(false);
   return <Container onClick={() => setFollow(!follow)}>{follow ? '팔로우' : '언팔로우'}</Container>;
 };
 
-export default Follow;
+export default FollowButton;
 
 const Container = styled.div`
   width: 66px;

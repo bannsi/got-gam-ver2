@@ -1,27 +1,28 @@
 import makeRequest from '../../../app/makeRequest';
-import { Me } from '../../../common/interfaces/me.interface';
+import { User } from '../../../common/interfaces/user.interface';
 import { Piece } from '../../../common/interfaces/piece.interface';
+import { PieceThumnail } from '../../../common/interfaces/pieceThumbnail.interface';
 
-export const fetchMeAPI = () =>
-  makeRequest<MeResponse>({
+export const fetchMyInfoAPI = () =>
+  makeRequest<UserResponse>({
     method: 'get',
     url: '/accounts/v1/me'
   });
 
-interface MeResponse {
+interface UserResponse {
   code: string;
   message: string;
-  body: Me;
+  body: User;
 }
 
 export const fetchMyPiecesAPI = (kakaoId: string) =>
   makeRequest<MyPiecesResponse>({
     method: 'get',
-    url: `/pieces/v1/${kakaoId}`
+    url: `/pieces/v1/user/${kakaoId}`
   });
 
 interface MyPiecesResponse {
   code: string;
   message: string;
-  body: Piece[];
+  body: PieceThumnail[];
 }

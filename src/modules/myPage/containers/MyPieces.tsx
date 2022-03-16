@@ -40,5 +40,5 @@ const Container = styled.div`
     grid-column: 1 / 1;
   }
   overflow-y: scroll;
-  padding-bottom: 50px;
+  padding-bottom: 150px;
 `;

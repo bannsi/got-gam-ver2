@@ -49,7 +49,7 @@ const MakePiece = () => {
         type="text/javascript"
         src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_APP_KEY}&autoload=false`}
       ></Script>
-      <Header text="조각 만들기" handleBack={handleBack} />
+      <Header text="조각 만들기" handleBack={handleBack} isDropdown={false} />
       <Page />
     </Container>
   );

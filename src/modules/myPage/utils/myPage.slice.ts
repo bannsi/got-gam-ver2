@@ -1,24 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Collection } from '../../../common/interfaces/collection.interface';
-import { Me } from '../../../common/interfaces/me.interface';
+import { User } from '../../../common/interfaces/user.interface';
 import { Piece } from '../../../common/interfaces/piece.interface';
+import { PieceThumnail } from '../../../common/interfaces/pieceThumbnail.interface';
 
 interface myPageState {
-  me: Me;
-  myPieces: Piece[];
+  me: User;
+  myPieces: PieceThumnail[];
   myCollections: Collection[];
 }
 
 const initialState: myPageState = {
   me: {
     kakaoId: '',
-    nickname: '쥬니',
+    nickname: '',
     enabled: true,
     createdAt: new Date(),
-    image: {
-      id: 0,
-      encoded: ''
-    }
+    image: ''
   },
   myPieces: [],
   myCollections: []
@@ -31,16 +29,16 @@ const myPageSlice = createSlice({
     fetchMyPiecesStart() {
       console.dir('fetch my pieces');
     },
-    fetchMyPiecesSuccess(state, action: PayloadAction<Piece[]>) {
+    fetchMyPiecesSuccess(state, action: PayloadAction<PieceThumnail[]>) {
       state.myPieces = [...action.payload];
     },
-    fetchMeSuccess(state, action: PayloadAction<Me>) {
+    fetchMyInfoSuccess(state, action: PayloadAction<User>) {
       state.me = action.payload;
     }
   }
 });
-export const { fetchMyPiecesStart, fetchMyPiecesSuccess, fetchMeSuccess } = myPageSlice.actions;
+export const { fetchMyPiecesStart, fetchMyPiecesSuccess, fetchMyInfoSuccess } = myPageSlice.actions;
 export default myPageSlice.reducer;
 
 export const selectMyPieces = (state: RootState) => state.myPage.myPieces;
-export const selectMe = (state: RootState) => state.myPage.me;
+export const selectMyInfo = (state: RootState) => state.myPage.me;

@@ -3,10 +3,11 @@ import BackIcon from '../../../common/components/icons/BackIcon';
 import styled from 'styled-components';
 import DropdownIcon from '../icons/DropdownIcon';
 import { Caption } from '../../../../styles/text/Caption';
+import Router from 'next/router';
 
 interface HeaderProps {
-  handleBack: () => void;
-  text: string;
+  handleBack?: () => void;
+  text?: string;
   isDropdown?: boolean;
   handleEdit?: () => void;
   handleRemove?: () => void;
@@ -17,7 +18,7 @@ const Header = ({ isDropdown = true, handleBack, text }: HeaderProps) => {
   return (
     <Container>
       <div className="left-box">
-        <BackIcon onBack={handleBack} />
+        <BackIcon onBack={handleBack ? handleBack : () => Router.back()} />
         <div>{text}</div>
       </div>
       {isDropdown && (

@@ -1,10 +1,7 @@
-export interface Me {
+export interface User {
   kakaoId: string;
   nickname: string;
   enabled: boolean;
   createdAt: Date;
-  image: {
-    id: number;
-    encoded: string;
-  };
+  image: string;
 }

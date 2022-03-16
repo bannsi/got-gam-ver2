@@ -33,7 +33,7 @@ interface Document {
   x: string;
   y: string;
   address: Address;
-  road_addresss: RoadAddress;
+  road_address: RoadAddress;
 }
 
 interface Address {
@@ -44,7 +44,7 @@ interface Address {
   h_code: string;
   b_code: string;
   mountain_yn: string;
-  main_addresss_no: string;
+  main_address_no: string;
   sub_address_no: string;
   zip_code: string;
   x: string;

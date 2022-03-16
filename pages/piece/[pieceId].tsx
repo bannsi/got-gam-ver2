@@ -1,7 +1,8 @@
 import React from 'react';
+import Piece from '../../src/modules/piece/containers/Piece';
 
-const Piece = () => {
-  return <div></div>;
+const index = () => {
+  return <Piece />;
 };
 
-export default Piece;
+export default index;
