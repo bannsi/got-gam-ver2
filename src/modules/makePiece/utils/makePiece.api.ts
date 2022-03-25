@@ -87,6 +87,7 @@ export interface MakePieceRequest {
   keywords: number[];
   optionalKeywords: number[];
   whos: number[];
+  place: string;
 }
 
 export interface MakePieceResponse {

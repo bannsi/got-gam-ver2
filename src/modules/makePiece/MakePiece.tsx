@@ -32,13 +32,15 @@ const MakePiece = () => {
   const dispatch = useDispatch();
   const currentPageIndex = useSelector(selectCurrentPageIndex);
   const Page = components[pages[currentPageIndex]] as () => JSX.Element;
-
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
     dispatch(fetchAllKeyword());
   }, []);
   const handleBack = () => {
     if (currentPageIndex === 0) {
-      Router.back();
+      setVisible(true);
+
+      // Router.back();
     } else {
       dispatch(backPage());
     }

@@ -4,6 +4,7 @@ import { Keyword } from '../../../common/interfaces/keyword.interface';
 import { Location, LocationResponse } from './makePiece.type';
 import { pages } from './pages';
 import { allowedStatusCodes } from 'next/dist/lib/load-custom-routes';
+import locationList from '../../../common/utils/locationList';
 
 export interface FileType {
   id: number; // 파일들의 고유값 id
@@ -73,6 +74,7 @@ const makePieceSlice = createSlice({
       state.form.address = action.payload.place_name;
       state.form.addressDetail = action.payload.address_name;
       state.form.placeURL = action.payload.place_url;
+      state.form.place = mapLocation(action.payload.address_name.split(' ')[0]);
     },
     setImg(state, action: PayloadAction<FileType[]>) {
       state.form.imgs = action.payload;
@@ -127,7 +129,10 @@ const makePieceSlice = createSlice({
       console.log('makepiece');
     },
     makePieceSuccess(state) {
-      state = initialState;
+      state = { ...initialState };
+    },
+    cancelMakingPiece(state) {
+      state = { ...initialState };
     }
   }
 });
@@ -172,3 +177,19 @@ export const selectSelectedOptions = (state: RootState) => state.makePiece.form.
 export const selectCompanions = (state: RootState) => state.makePiece.companionIds;
 export const selectSelectedCompanions = (state: RootState) => state.makePiece.form.companions;
 export const selectForms = (state: RootState) => state.makePiece.form;
+
+const mapLocation = (address_name: string) => {
+  switch (address_name) {
+    case '제주특별자치도':
+      return '제주';
+    case '인천':
+    case '경기':
+      return '인천/경기';
+    default:
+      if (locationList.includes(address_name)) {
+        return address_name;
+      } else {
+        return '해외';
+      }
+  }
+};

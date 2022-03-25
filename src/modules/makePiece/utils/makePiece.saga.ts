@@ -93,7 +93,8 @@ function* makePieceSaga() {
       images: data.imgs.map((img: FileType) => img.url),
       keywords: data.keywords,
       optionalKeywords: data.options,
-      whos: data.companions
+      whos: data.companions,
+      place: data.place
     };
 
     const { body } = yield call(makePieceAPI, form);

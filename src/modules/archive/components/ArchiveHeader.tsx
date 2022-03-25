@@ -17,7 +17,7 @@ const ArchiveHeader = () => {
   const isFolder = router.query.folder;
 
   return (
-    <Container type="1">
+    <Container type="2">
       {isFolder && <BackIcon onBack={() => router.back()} />}
       <div>{'아카이브'}</div>
     </Container>
