@@ -9,7 +9,7 @@ interface PieceDetailProps {
 const PieceDetail = ({ piece }: PieceDetailProps) => {
   return piece ? (
     <Container>
-      <Img src={piece.images[0]}></Img>
+      <Img src={piece.images[0].image}></Img>
       <Desc>{piece.content}</Desc>
     </Container>
   ) : (
