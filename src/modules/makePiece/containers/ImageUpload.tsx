@@ -14,6 +14,7 @@ import {
 import EXIF from 'exif-js';
 import { Location } from '../utils/makePiece.type';
 import { ConvertDMSToDD } from '../utils/ConvertDMSToDD';
+import DeleteIcon from '../../../common/components/icons/DeleteIcon';
 
 const ImageUpload = () => {
   const router = useRouter();
@@ -106,6 +107,14 @@ const ImageUpload = () => {
     }
   }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
 
+  const onDelete = useCallback(
+    (id: number) => {
+      const newFiles = files.filter((file) => file.id !== id);
+      setFiles(newFiles);
+    },
+    [files]
+  );
+
   useEffect(() => {
     initDragEvents();
     return () => removeDragEvents();
@@ -126,7 +135,11 @@ const ImageUpload = () => {
               object: { name },
               url
             } = file;
-            return <PreviewImg key={id} url={url as string}></PreviewImg>;
+            return (
+              <PreviewImg key={id} url={url as string}>
+                <DeleteIcon onDelete={() => onDelete(id)} />
+              </PreviewImg>
+            );
           })}
       </Images>
       <NextButton
@@ -181,6 +194,7 @@ const Content = styled.div<Props>`
 
 const Images = styled.div`
   display: flex;
+  width: 100%;
   overflow-x: scroll;
   padding: 20px;
 `;
@@ -190,6 +204,7 @@ interface ImgProps {
 }
 
 const PreviewImg = styled.div<ImgProps>`
+  position: relative;
   width: 100px;
   height: 100px;
   border-radius: 10px;

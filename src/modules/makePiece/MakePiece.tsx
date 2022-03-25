@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { backPage, fetchAllKeyword, selectCurrentPageIndex } from './utils/makePiece.slice';
