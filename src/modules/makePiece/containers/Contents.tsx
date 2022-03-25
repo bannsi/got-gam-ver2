@@ -48,8 +48,8 @@ const Container = styled.div`
 `;
 
 const TextArea = styled.textarea`
+  margin: auto 0;
   margin-top: 56px;
-  height: 400px;
   font-size: 16px;
   ::placeholder {
     color: ${(props) => props.theme.grayScale.disable};
