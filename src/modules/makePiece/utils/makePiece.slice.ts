@@ -5,10 +5,12 @@ import { Location, LocationResponse } from './makePiece.type';
 import { pages } from './pages';
 import { allowedStatusCodes } from 'next/dist/lib/load-custom-routes';
 import locationList from '../../../common/utils/locationList';
+import { Image } from '../../../common/interfaces/piece.interface';
 
 export interface FileType {
   id: number; // 파일들의 고유값 id
   object: File;
+  thumbail: boolean;
   url: string | ArrayBuffer | null;
 }
 

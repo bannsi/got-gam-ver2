@@ -25,7 +25,7 @@ const ImageUpload = () => {
   const fileId = useRef<number>(0);
   const dragRef = useRef<HTMLDivElement | null>(null);
 
-  const onChangeFiles = (e: ChangeEvent<HTMLInputElement> | any) => {
+  const onChangeFiles = useCallback((e: ChangeEvent<HTMLInputElement> | any) => {
     let selectFiles: File[] = [];
     let tmpFiles: FileType[] = files;
     if (e.type === 'drop') {
@@ -57,12 +57,20 @@ const ImageUpload = () => {
       reader.onloadend = () => {
         const previewImgUrl = reader.result;
         if (previewImgUrl) {
-          tmpFiles = [...tmpFiles, { id: fileId.current++, object: file, url: previewImgUrl }];
+          tmpFiles = [
+            ...tmpFiles,
+            {
+              id: fileId.current++,
+              object: file,
+              thumbail: tmpFiles.length === 0 ? true : false,
+              url: previewImgUrl
+            }
+          ];
           setFiles([...tmpFiles]);
         }
       };
     }
-  };
+  }, []);
 
   const handleDragIn = useCallback((e: DragEvent) => {
     e.preventDefault();
@@ -110,6 +118,9 @@ const ImageUpload = () => {
   const onDelete = useCallback(
     (id: number) => {
       const newFiles = files.filter((file) => file.id !== id);
+      newFiles.forEach((file, index) => {
+        if (index === 0) file.thumbail = true;
+      });
       setFiles(newFiles);
     },
     [files]

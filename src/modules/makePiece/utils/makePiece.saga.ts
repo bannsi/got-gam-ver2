@@ -33,6 +33,7 @@ import { Location } from './makePiece.type';
 import { Keyword } from '../../../common/interfaces/keyword.interface';
 import { WhoKeyword } from '../../../common/interfaces/whoKeyword.interface';
 import Router from 'next/router';
+import { Image } from '../../../common/interfaces/piece.interface';
 
 function* fetchLocationSaga(action: PayloadAction<Location[]>) {
   try {
@@ -90,7 +91,9 @@ function* makePieceSaga() {
       address: data.address,
       addressDetail: data.addressDetail,
       placeUrl: data.placeURL,
-      images: data.imgs.map((img: FileType) => img.url),
+      images: data.imgs.map((img: FileType) => {
+        return { image: img.url, thumbnail: img.thumbail } as Image;
+      }),
       keywords: data.keywords,
       optionalKeywords: data.options,
       whos: data.companions,

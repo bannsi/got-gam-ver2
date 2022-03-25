@@ -3,6 +3,7 @@ import BackIcon from '../../../common/components/icons/BackIcon';
 import styled from 'styled-components';
 import DropdownIcon from '../icons/DropdownIcon';
 import { Caption } from '../../../../styles/text/Caption';
+import { SubTitle } from '../../../../styles/text/SubTitle';
 import Router from 'next/router';
 
 interface HeaderProps {
@@ -16,7 +17,7 @@ interface HeaderProps {
 const Header = ({ isDropdown = true, handleBack, text }: HeaderProps) => {
   const [visible, setVisible] = useState(false);
   return (
-    <Container>
+    <Container type="2">
       <div className="left-box">
         <BackIcon onBack={handleBack ? handleBack : () => Router.back()} />
         <div>{text}</div>
@@ -48,6 +49,8 @@ const Container = styled.div`
   .left-box {
     display: flex;
     align-items: center;
+    ${SubTitle}
+    color: ${(props) => props.theme.grayScale.body}
   }
 `;
 

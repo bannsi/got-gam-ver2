@@ -1,7 +1,7 @@
 import kakaoApiRequest from '../../../app/kakaoApiRequest';
 import makeRequest from '../../../app/makeRequest';
 import { Keyword } from '../../../common/interfaces/keyword.interface';
-import { Piece } from '../../../common/interfaces/piece.interface';
+import { Image, Piece } from '../../../common/interfaces/piece.interface';
 import { WhoKeyword } from '../../../common/interfaces/whoKeyword.interface';
 import { LocationResponse } from './makePiece.type';
 
@@ -83,7 +83,7 @@ export interface MakePieceRequest {
   address: string;
   addressDetail: string;
   placeUrl: string;
-  images: string[];
+  images: Image[];
   keywords: number[];
   optionalKeywords: number[];
   whos: number[];

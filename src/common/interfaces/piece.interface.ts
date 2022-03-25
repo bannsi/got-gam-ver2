@@ -20,6 +20,11 @@ export interface Piece {
   keywords: Keyword[];
   opKeywords: Keyword[];
   whos: WhoKeyword[];
-  images: string[];
+  images: Image[];
   place: string;
+}
+
+export interface Image {
+  image: string;
+  thumbnail: boolean;
 }
