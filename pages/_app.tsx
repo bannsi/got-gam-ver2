@@ -1,8 +1,11 @@
 import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
-import { ReactElement, ReactNode } from 'react';
+import { useRouter } from 'next/router';
+import { ReactElement, ReactNode, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { wrapper } from '../src/app/store';
+import { initMakePiece } from '../src/modules/makePiece/utils/makePiece.slice';
 import { GlobalStyle } from '../styles/globalStyle';
 
 const theme = {

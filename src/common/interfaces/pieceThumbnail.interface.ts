@@ -1,4 +1,5 @@
 export interface PieceThumnail {
   pieceId: number;
-  thumbnail: string;
+  userId: number;
+  encoded: string;
 }

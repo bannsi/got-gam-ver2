@@ -206,6 +206,7 @@ const Content = styled.div<Props>`
 const Images = styled.div`
   display: flex;
   width: 100%;
+  justify-content: center;
   overflow-x: scroll;
   padding: 20px;
 `;

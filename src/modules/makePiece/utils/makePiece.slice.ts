@@ -36,23 +36,24 @@ interface MakePieceState {
   currentPageIndex: number;
   locationList: LocationResponse[];
 }
+const initialForm = {
+  imgLocation: { lat: 0, lng: 0 } as Location,
+  latitude: '',
+  longitude: '',
+  address: '',
+  addressDetail: '',
+  placeURL: '',
+  imgs: [],
+  date: new Date(),
+  keywords: [],
+  options: [],
+  companions: [],
+  contents: '',
+  place: ''
+};
 
 const initialState = {
-  form: {
-    imgLocation: { lat: 0, lng: 0 } as Location,
-    latitude: '',
-    longitude: '',
-    address: '',
-    addressDetail: '',
-    placeURL: '',
-    imgs: [],
-    date: new Date(),
-    keywords: [],
-    options: [],
-    companions: [],
-    contents: '',
-    place: ''
-  },
+  form: initialForm,
   keywordIds: [],
   companionIds: [],
   optionIds: [],
@@ -131,10 +132,10 @@ const makePieceSlice = createSlice({
       console.log('makepiece');
     },
     makePieceSuccess(state) {
-      state = { ...initialState };
+      state.form = initialForm;
     },
-    cancelMakingPiece(state) {
-      state = { ...initialState };
+    initMakePiece(state) {
+      state.form = initialForm;
     }
   }
 });
@@ -159,7 +160,8 @@ export const {
   fetchAllKeyword,
   fetchCompanionIds,
   fetchOptionIds,
-  fetchKeywordIds
+  fetchKeywordIds,
+  initMakePiece
 } = makePieceSlice.actions;
 export default makePieceSlice.reducer;
 

@@ -20,7 +20,7 @@ const PieceItem = ({ piece }: Props) => {
   return (
     <ContainerBox>
       <ArchiveButton isArchived={isArchived} onArchive={onArchive} />
-      <Container src={piece.thumbnail} onClick={() => router.push(`/piece/${piece.pieceId}`)} />
+      <Container src={piece.encoded} onClick={() => router.push(`/piece/${piece.pieceId}`)} />
     </ContainerBox>
   );
 };
