@@ -16,7 +16,6 @@ const FolderSelectItem = ({ title, thumbnail, selected, onClick }: FolderSelectI
     </Container>
   );
 };
-// title caption
 export default FolderSelectItem;
 
 interface ContainerProps {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Caption } from '../../../common/text/Caption';
+import { Caption } from '../../../../styles/text/Caption';
 import { timeParser } from '../utils/timeParser';
 
 interface TimeStampProps {
@@ -11,7 +11,7 @@ interface TimeStampProps {
 const TimeStamp = ({ url, time }: TimeStampProps) => {
   return (
     <Container onClick={() => (window.location.href = `${timeParser(url, time)}`)}>
-      <Caption className="time">{time}</Caption>
+      <span className="time">{time}</span>
     </Container>
   );
 };
@@ -27,6 +27,7 @@ const Container = styled.div`
   border: 1px solid #f45400;
   .time {
     color: #f45400;
+    ${Caption}
   }
   box-sizing: border-box;
   border-radius: 6px;

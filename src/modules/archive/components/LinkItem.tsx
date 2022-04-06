@@ -1,4 +1,4 @@
-import { LinkPreview } from '@dhaiwat10/react-link-preview';
+// import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -8,14 +8,14 @@ interface LinkItemProps {
 const LinkItem = ({ url }: LinkItemProps) => {
   return (
     <Container>
-      <LinkPreview
+      {/* <LinkPreview
         borderRadius="8px"
         imageHeight="165px"
         margin="8px 0"
         width="382px"
         borderColor="#E1E1E1"
         url={url}
-      />
+      /> */}
     </Container>
   );
 };

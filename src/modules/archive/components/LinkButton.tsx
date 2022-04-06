@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import LinkIcon from '../../../common/icons/LinkIcon';
+import LinkIcon from '../../../common/components/icons/LinkIcon';
 
 interface LinkButtonProps {
   onClick: () => void;
