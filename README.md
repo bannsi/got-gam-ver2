@@ -1,34 +1,135 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🍊곧,감
 
-## Getting Started
 
-First, run the development server:
+<img width="1920" alt="표지" src="https://user-images.githubusercontent.com/56557862/144700419-2c71bc8f-f093-41e9-8370-2fb6ff380f3e.png">
 
-```bash
-npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+누군가의 기록이 나에게는 정보가 되고, 또 나의 기록이 누군가에게는 정보가 되는 여행 플랫폼
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+해,커리어 해커톤 프로젝트
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+2021.10~2021.11 (1개월) 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# 팀 반시들
 
-## Learn More
+- 열정맨 반시 프론트엔드 곽혜원
+- 커피맛 반시 백엔드 정진호
+- 조용한 관종반시 디자인/마케팅 김승혜
+- 고당도 생각을 쌓는 반시 디자인/기획 이영희
 
-To learn more about Next.js, take a look at the following resources:
+# 사용한 기술
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 기술 스택 (프론트엔드)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+React, Redux, Redux-saga, Typescript, styled-components
 
-## Deploy on Vercel
+- 외부 라이브러리 및 API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+카카오 로컬 API, 카카오 맵 API, 카카오 로그인 API, react-router-dom, history, exif.js, react-modal, moment, react-link-preview
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- 협업
+
+Git, Github, Notion, Figma
+
+- 기술 스택 (백엔드)
+
+Spring Boot, Spring Cloud, Spring Security, Spring Data JPA, Java Openjdk, MySQL, AWS
+
+# 프로젝트 소개
+
+위드 코로나 시대에 대학생들이 가장 먼저 하고싶은 것은 단연 여행입니다. 여행 서비스와 콘텐츠들이 넘쳐나지만, **'여행을 가고싶어'** 라는 생각이 들어도 __'어디로 가야겠어'__ 라고 결정하고 __'무엇을 해야겠어'__ 라고 계획을 세우는 것은 쉽지 않습니다. 
+
+여행을 가고 싶다는 생각이 구체화되는 첫 번째 단계인 **목적지 선정 및 정보 수집**은 여행 서비스가 아닌 **다른 플랫폼**에서 이루어지고 있습니다.
+
+이 때문에 여행에 대한 정보만 확인하기 어렵고, 광고성 글인지 아닌지 확인해가며 다양한 플랫폼에서 **검색 노동**을 해야합니다. 
+
+따라서, 일상생활 속에서 여행을 가고싶다는 생각이 쉽고 빠르게 구체화될 수 있도록 돕는 서비스를 만들고자 했습니다. 
+
+정보를 효율적으로 전달받고 싶어하는 대학생들에게 기존방식은 **비효율적이고 귀찮은 과정**입니다. 
+
+이에 대학생들이 특별한 목적없이 **소셜 피드를 통해 정보를 얻고**, **자신의 경험을 공유하고 기록하는 것**을 즐기는 것에 주목하였습니다. 
+
+따라서 공유와 기록을 좋아하는 대학생들이 여행을 기록하고 피드 형식으로 쉽고 빠르게 여행에 대한 정보를 수집할 수 있는 여행 플랫폼이 필요할 것이라고 생각하였습니다. 
+
+# 전체 시스템 구성
+
+- 전체 시스템 플로우
+![14](https://user-images.githubusercontent.com/56557862/144700417-60730bfb-26c1-4ad6-b68f-1d1dbdd47449.png)
+
+
+
+- 정보탐색 플로우
+
+정보 탐색은 홈에서 베스트 조각과 조각모음을 탐색할 수 있습니다. 피드에서는 필터를 사용하여 조각, 조각모음을 검색할 수 있습니다. 조각을 누르면 조각 페이지로 이동합니다. 조각에는 사용자가 추가한 사진과 여행에 대한 짧은 기록, 장소, 키워드 등이 담겨있습니다. 조각모음에는 여행 일정에서 일차 별로 나누어 기록한 조각들과 기록을 확인할 수 있습니다. 
+
+![15](https://user-images.githubusercontent.com/56557862/144700413-fa8ba36f-640a-4e1f-9710-36ddc3928660.png)
+
+
+- 아카이빙 플로우
+
+조각, 조각모음을 스크랩 버튼을 눌러 원하는 폴더에 저장할 수 있습니다. 링크를 추가하고 싶으면 하단의 링크버튼을 눌러서 유튜브 링크면 타임라인을 선택적으로 입력할 수 있으며, 링크 미리보기에서 타임라인 버튼을 누르면 유튜브 영상이 해당 시간부터 재생됩니다. 
+
+![16](https://user-images.githubusercontent.com/56557862/144700408-a42efe76-b387-4d59-a79b-8543f2314696.png)
+
+
+- 기록 - 조각 제작 플로우
+
+올리고 싶은 사진을 선택하면 사진 위치를 기반으로 추출한 위치 리스트 중 하나를 선택할 수 있습니다. 사진에서 추출한 시간이 기본적으로 들어가있지만 날짜를 원하면 수정할 수 있습니다. 키워드를 선택하고 사진에 남기고 싶은 기록을 작성할 수 있습니다. 
+
+![17](https://user-images.githubusercontent.com/56557862/144700406-d0b0ed11-5d18-44fb-896b-bd86e844a00e.png)
+
+
+- 기록- 조각모음 플로우
+
+조각모음은 사용자가 만들었던 조각에서 선택하여 여행일정을 입력받고 선택한 조각이미지에서 커버이미지를 선택하면 에디터로 이동합니다. 에디터에서는 앞서 입력받은 여행일정을 기반으로 일차별로 조각을 정리해주고 추가적인 기록을 작성하여 하나의 조각 모음을 만들 수 있습니다. 
+
+![18](https://user-images.githubusercontent.com/56557862/144700405-d81593a5-d5a7-4b76-aede-8ed34000c92f.png)
+
+
+- 시스템 구성
+![Frame_126](https://user-images.githubusercontent.com/56557862/144700397-2ada0e86-f708-439c-a7ff-faaa6d76cc23.png)
+
+
+
+- 데이터 플로우
+
+![Frame_154](https://user-images.githubusercontent.com/56557862/144700396-e6ac41ab-bf04-4139-b882-faab102b8548.png)
+
+
+# 역할
+
+서비스 전체 프론트엔드 개발과 서비스의 기획, 그리고 팀의 팀장을 맡았습니다.
+
+팀장으로써 팀원 간의 커뮤니케이션을 주도하였으며 일정 도출과 목표설정을 하였습니다. 
+
+프론트엔드 개발에서 수행하였던 부분은 다음과 같습니다. 
+
+- 프로젝트 세팅 (eslint, prettier, 타입스크립트 설정 등)
+- 리덕스, 리덕스 사가 세팅 - 스토어, 루트 리듀서, 루트 사가 설정
+- 버튼, 텍스트 스타일, 모달 등 공용 컴포넌트 개발
+- React Modal 커스텀, transition을 사용해 애니메이션 구현
+- 카카오 소셜로그인 구현, 쿠키에 토큰 저장
+- 아카이빙
+  - 조각과 조각모음, 링크미리보기 컴포넌트 구현
+  - 링크 입력받아 원하는 폴더에 저장, 유튜브 링크일 경우 타임라인 입력 가능 
+- 조각 만들기  
+  - exif.js를 사용해 사진 메타데이터 추출
+  - 위치 데이터 기반으로 카카오 로컬 API를 사용해 반경 500미터 안의 카페, 음식점, 관광명소 등의
+  장소 정보를 리스트로 구현, 시간 데이터를 여행 날짜를 자동으로 설정
+- 조각 모음 만들기
+  - 여행 기간을 입력받아 일차별 조각들과 위치를 마커로 표시한 지도를 정리해주고 내용 추가 작성 가능
+
+# 프로젝트 결과
+
+해커톤 해,커리어에서 우수 참가팀 50팀안에 들었습니다. 
+
+![Untitled](https://user-images.githubusercontent.com/56557862/144700379-0a669619-35b7-412a-bca8-5b1464b2e50e.png)
+
+![Untitled 1](https://user-images.githubusercontent.com/56557862/144700374-b7a0f4a4-89f5-46ed-8972-8c814bc9cedc.png)
+
+
+
+
+https://user-images.githubusercontent.com/56557862/144453963-73c9e7d5-6811-4ac9-98a1-db9f03935468.mp4
+
+
